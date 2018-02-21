@@ -1,0 +1,21 @@
+
+
+.item{
+   margin-bottom:50px;
+   background-color:blue;
+   width:80%;
+}
+
+#deleteButton{
+  background-color:red;
+}
+
+.ingr{
+  text-align:center;
+  font-size:30px;
+}
+
+.food{
+  background-color:red;
+  font-size:30px;
+}
