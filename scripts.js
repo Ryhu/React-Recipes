@@ -28,7 +28,17 @@ var MenuItem = React.createClass({
 var Menu = React.createClass({
 
    getInitialState(){
-      return {menuItems: []}
+      return {menuItems: [
+                  {
+                     id: this.generateKey(),
+                     name: "hamburgers"
+                  },
+                  {
+                     id: this.generateKey(),
+                     name: "pizza"
+                  },
+
+                         ]}
    },
 
    //for additem
@@ -62,8 +72,10 @@ var Menu = React.createClass({
 
    render(){
       return (<div className="menu">
+      {console.log(this.state)}
          {this.state.menuItems.map(this.eachItem)}
          <button onClick={() => this.addItem('Note')}>+++</button>
+         <Moddy onSubmit={this.addItem}/>
       </div>)
 
 
@@ -76,23 +88,52 @@ var Moddy = React.createClass({
      return {open:false}
   },
 
+  submit(){
+     this.props.onSubmit(this.refs.recipeName.value);
+  },
 
-  render(){
-    return (
-      <div>
-      <button data-toggle="modal" data-target="exampleMoal">thing here</button>
-      <div className="modal" id="exampleMoal"> </div>
-    </div>)
-  }
+
+   render(){
+      return (
+         <div>
+            <button data-toggle="modal" data-target="#myModal"> thing here </button>
+            <div className="modal fade" id="myModal">
+               <div className="modal-dialog">
+                  <div className="modal-content">
+                     <div className="modal-header">
+                        <div className="modal-title">Create a New Recipe!</div>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div className="modal-body">
+                        Recipe Name:
+                        <input ref="recipeName">
+
+                        </input>
+                        <br />
+                        Recipe Stuffs:
+                        <input ref="recipeStuffs">
+
+                        </input>
+                        <br />
+                        <button onClick={this.submit}>submit</button>
+                     </div>
+                  </div>
+
+               </div>
+
+
+
+            </div>
+         </div>
+      )
+   }
+
+
 })
 
 
-ReactDOM.render(
-  <div>
-    <Moddy />
-
-  </div>, document.getElementById("mod-container")
-)
 
 
 
@@ -104,7 +145,7 @@ ReactDOM.render(
    </div>, document.getElementById("react-container")
 )
 
-ReactDOM.render(
+/*ReactDOM.render(
   <div>
     <MenuItem text="stupy">
       its working
@@ -112,3 +153,4 @@ ReactDOM.render(
     <MenuItem text="hajkhfaskljhflkj"> it workaz</MenuItem>
   </div>, document.getElementById("stupydiv")
 )
+*/

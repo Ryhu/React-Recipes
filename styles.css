@@ -1,4 +1,10 @@
-
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+}
 
 .item{
    margin-bottom:50px;
@@ -18,4 +24,8 @@
 .food{
   background-color:red;
   font-size:30px;
+}
+
+.close{
+   float:right;
 }
